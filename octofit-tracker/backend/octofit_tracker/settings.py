@@ -37,19 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'corsheaders',
-    'dj_rest_auth',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'octofit_tracker',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -79,6 +71,8 @@ WSGI_APPLICATION = 'octofit_tracker.wsgi.application'
 
 
 # Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -127,19 +121,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
-
-# REST Framework settings
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
