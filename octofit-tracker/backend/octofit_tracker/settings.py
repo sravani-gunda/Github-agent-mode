@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,15 @@ SECRET_KEY = 'django-insecure-*!z226obm=w3*l+io32@n890w4_p0dex6^yzu%rqw524#bs*7z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Get the Codespace name or default to localhost
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME', 'localhost')
 
+# Allow the localhost and Codespace URL
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    f'{CODESPACE_NAME}-8000.app.github.dev',  # Codespace URL
+]
 
 # Application definition
 
@@ -37,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -72,17 +81,6 @@ WSGI_APPLICATION = 'octofit_tracker.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-#DATABASES = {
-   # 'default': {
-   #     'ENGINE': 'djongo',
-   #     'NAME': 'octofit_db',
-   #     'ENFORCE_SCHEMA': False,
-   #     'CLIENT': {
-   #         'host': 'mongodb://localhost:27017',
-  #      }
- #   }
-#}
 
 DATABASES = {
     'default': {
